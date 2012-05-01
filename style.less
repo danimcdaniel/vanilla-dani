@@ -1,31 +1,23 @@
 /*
-Theme Name: Vanilla Dani
+Theme Name: Vanilla Dani Fixed
 Version: 2.0
-Description: Vanilla Theme for design and development 
+Description: Fixed width vanilla theme for design and development of client sites 
 Author: Dani McDaniel
 Author URI: http://anidandesign.com
+Tags: fixed-width, widgets, 2 column, vanilla
 */
 
-/*-------------------------------------------------
-     LINKED STYLESHEETS
----------------------------------------------------*/
+/* -----------------------------------------------------------------------------
+     IMPORTS
+----------------------------------------------------------------------------- */
 
 /*-- All the basic WP styles --*/
 @import url("css/wp.css");
+@import url("css/mixins.less");
 
-/*-- Color Guide ------------------------------
-background: #5d1db5
-text #1e1e1e
-a #5d1db5
-a:hover #d11db1
-headings #262626
-img borders #333
-img hover borders #ccc
--------------------------------------------- */
-
-/* -------------------------------------------------------------- 
-   GLOBAL RESET 
--------------------------------------------------------------- */
+/* -----------------------------------------------------------------------------
+     GLOBAL RESET
+----------------------------------------------------------------------------- */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -152,14 +144,14 @@ li.rss {
 img.attachment-single-post-thumbnail,
 .attachment-blog-thumbnail,
 img.attachment-blog-thumbnail {
-   width: 650px !important;
+   max-width: 650px !important;
    border: 0;
    margin: 0 0 20px;
 }
 /*Sidebar img*/
 #sidebar .widget img {
 	border: 0;
-	width: 290px !important;
+	max-width: 290px !important;
 }
 /*Content Images*/
 .index-content img,
@@ -477,7 +469,7 @@ h4.comments-title {
 #footer .inner:last-child { border-top: 1px dotted #c69acb; padding: 15px 0 40px; }
 #footer .inner img {
     border: 1px solid #eb2f7d;
-    width: 223px !important;
+    max-width: 223px !important;
 }
 #footer .inner .one,
 #footer .inner .two,

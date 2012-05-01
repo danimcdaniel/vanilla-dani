@@ -1,4 +1,4 @@
-vanilla-dani
-============
+Vanilla Dani Fixed
+==================
 
-Vanilla Wordpress theme i use for developing client sites
+Fixed width vanilla Wordpress theme i use for developing client sites
