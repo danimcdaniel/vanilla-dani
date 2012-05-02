@@ -7,17 +7,11 @@ Author URI: http://anidandesign.com
 Tags: fixed-width, widgets, 2 column, vanilla
 */
 
-/* -----------------------------------------------------------------------------
-     IMPORTS
------------------------------------------------------------------------------ */
-
-/*-- All the basic WP styles --*/
-@import url("css/wp.css");
+//--- IMPORTS
 @import url("css/mixins.less");
 
-/* -----------------------------------------------------------------------------
-     GLOBAL RESET
------------------------------------------------------------------------------ */
+/*--- GLOBAL RESET
+----------------------------------------------------------------------------*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -45,21 +39,21 @@ del { text-decoration: line-through; }
 
 /* tables still need 'cellspacing="0"' in the markup */
 table { border-collapse: collapse; border-spacing: 0; width: 100%; }
-/* -----------------------------------------------------------------------------
-     IE GRR
------------------------------------------------------------------------------ */
+
+/*--- IE BS
+----------------------------------------------------------------------------*/
 /* bicubic resizing for non-native sized IMG:
 code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/ */
 .ie7 img { -ms-interpolation-mode: bicubic; }
-/* -----------------------------------------------------------------------------
-     BASIC HTML STYLES
------------------------------------------------------------------------------ */
+
+/*--- GENERAL HTML
+----------------------------------------------------------------------------*/
 /* maxvoltar.com/archive/-webkit-font-smoothing */
 html { -webkit-font-smoothing: antialiased; }
 body {
    background: #fff; 
-   font-size: .90em; font-family: Arial, sans-serif;
-   color: #1e1e1e; line-height: 20px;
+   font-size: .90em; font-family: @sans-serif;
+   color: #444; line-height: 20px;
    /*sets min width for ipad*/
    min-width:1250px; 
    min-height:1500px
@@ -67,7 +61,7 @@ body {
 address { margin: 5px 0; }
 big { font-size: 125%; }
 blockquote { 
-    font: 13px/1.5em Georgia, serif;
+    font-size: 13px/1.5em; font-family: @serif;
     margin: 10px 0px 10px 50px; padding: 0 0 0 15px; 
     border-left: 3px solid #d9d9d9; 
     width:450px; clear: both; 
@@ -104,37 +98,89 @@ q q:after { content: "\2019"; }
 strong { font-weight: bold; }
 table { margin: 10px 0; }
 
-/* -----------------------------------------------------------------------------
-     LINKS
------------------------------------------------------------------------------ */
-a { color: #eb2f7d; text-decoration:none; }
-a:visited { color: #eb2f7d; text-decoration:none; }
-a:hover { color: #b5d51f; text-decoration:none; }
-a:active { color: #b5d51f; text-decoration:none; }
+/*--- DEFAULT WP STYLES
+----------------------------------------------------------------------------*/
+/* Images */
+.wp-smiley { max-height: 1em; margin:0 !important; }
+
+.size-full {}
+.size-large {}
+.size-medium {}
+.size-thumbnail {}
+
+/* Sticky Post */
+.sticky {}
+
+/* Captions */
+.wp-caption { text-align: left; margin-bottom: 1.5em; }
+.wp-caption img {
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+.wp-caption p.wp-caption-text { margin: 0; }
+
+.gallery dl {}
+.gallery dt {}
+.gallery dd {}
+.gallery dl a {}
+.gallery dl dt img { border: 1px solid #ccc !important; }
+.gallery-caption {}
+
+/* blogroll links */
+.linkcat {}
+.blogroll {}
+
+/* read-more links */
+.more-link {}
+
+/* Pullquotes  */
+blockquote.left {
+	float: left;
+	margin-left: 0;
+	margin-right: 20px;
+	text-align: right;
+	width: 33%;
+}
+blockquote.right {
+	float: right;
+	margin-left: 20px;
+	margin-right: 0;
+	text-align: left;
+	width: 33%;
+}
+
+/*--- LINKS
+----------------------------------------------------------------------------*/
+a { color: @main; text-decoration:none; }
+a:visited { color: @main; text-decoration:none; }
+a:hover { color: @alt; text-decoration:none; }
+a:active { color: @alt; text-decoration:none; }
 a:focus { outline: 0; }
 
 /* SELECTED TEXT ----------------------------*/
-*::selection { background:#eb2f7d; color:#fff; }
-*::-moz-selection { background:#eb2f7d; color:#fff; }
+*::selection { background: @main; color:#fff; }
+*::-moz-selection { background:@main; color:#fff; }
 
-/* -----------------------------------------------------------------------------
-     UNIVERSAL STYLES
------------------------------------------------------------------------------ */
+/*--- FIXES
+----------------------------------------------------------------------------*/
 .center { text-align: center; margin: auto; }
 .clear,
 .clearfix { clear: both; }
 .floatleft { float: left; }
 .floatright { float: right; }
 
+/*--- RANDOM STYLES
+----------------------------------------------------------------------------*/
 .small { font-size: 90%; }
 
 li.rss {
     background: url(img/rss.png) no-repeat 0% 50%;
     padding: 0 0 0 20px;
 }
-/* -----------------------------------------------------------------------------
-     IMAGES
------------------------------------------------------------------------------ */
+
+/*--- IMAGES
+----------------------------------------------------------------------------*/
 .alignleft, img.alignleft { display: inline; float: left; margin: 0 20px 20px 0; border: 0; }
 .alignright, img.alignright { display: inline; float: right; margin: 0 0 20px 20px; border: 0; }
 .aligncenter, img.aligncenter, .alignnone, img.alignnone { clear: both; display: block; margin: 0 auto 20px; border: 0; }
@@ -162,9 +208,8 @@ img.attachment-blog-thumbnail {
    max-width: 650px !important;
 }
 
-/* -----------------------------------------------------------------------------
-     HEADINGS
------------------------------------------------------------------------------ */
+/*--- HEADINGS
+----------------------------------------------------------------------------*/
 h1,h2,h3,h4,h5,h6 { 
 	font-family: arial, sans-serif; font-weight: normal; 
 	margin: 10px 0;
@@ -193,7 +238,7 @@ h2.full-title,
 h2.archive-title,
 h2.search-title,
 h2.error-title { 
-    color: #b5d51f; 
+    color: @alt; 
     font-size: 250%; line-height: 30px;
     margin: 0 0 20px; padding: 0; 
 }
@@ -201,32 +246,30 @@ h2.error-title {
 /*Widget Headers*/
 #sidebar h3,
 #sidebar h3.widget-title {
-	color: #b5d51f;
+	color: @alt;
 	font-size: 25px; line-height: 27px;
 	padding: 0; margin: 0 0 20px; 
 }
 /*Comments Headers*/
 h2.comments-title { 
-    color: #b5d51f; 
+    color: @alt; 
     font-size: 200%; 
     margin: 0 0 20px; padding: 0; 
 }
 h4.comments-title {
-    color: #b5d51f;
+    color: @alt;
 	font-size: 185%; 
 	padding: 0;
 }
 /*Footer Headers*/
 #footer h3 {
-	color: #eb2f7d;
+	color: @main;
 	font-size: 225%; 
 	padding: 0; margin: 0 0 10px;
 }
 
-/* -----------------------------------------------------------------------------
-     STRUCTURE
------------------------------------------------------------------------------ */
-
+/*--- STRUCTURE
+----------------------------------------------------------------------------*/
 /*--MAIN WRAP--*/
 #wrapper {
     background: #fff;
@@ -255,9 +298,8 @@ h4.comments-title {
 	width: 100%;
 } 
 
-/* -----------------------------------------------------------------------------
-     HEADER
------------------------------------------------------------------------------ */
+/*--- HEADER
+----------------------------------------------------------------------------*/
 #header .left { float: left; padding: 30px 0 20px; }
 #header .right { float: right; text-align: right; padding: 10px 0 0; }
 #header .right ul { margin: 0; padding: 0; list-style: none; }
@@ -273,9 +315,8 @@ h4.comments-title {
    border-width:1px 1px 0;
 }
 
-/* -----------------------------------------------------------------------------
-     NAVIGATION
------------------------------------------------------------------------------ */
+/*--- NAVIGATION
+----------------------------------------------------------------------------*/
 #mainnav {
     margin: 0px 0 20px; padding: 0;
     clear: both; 
@@ -304,9 +345,8 @@ h4.comments-title {
 #crumbs .current { font-style: italic; color: #838383; }
 
 
-/* -----------------------------------------------------------------------------
-    POSTS
-------------------------------------------------------------------------------*/
+/*--- POSTS
+----------------------------------------------------------------------------*/
 .post { 
     padding: 0px; margin: 0; 
     overflow: auto; 
@@ -383,7 +423,7 @@ h4.comments-title {
     width: 100%;
     float: left; clear: both;
     padding: 0; margin: 0;
-    color: #eb2f7d;
+    color: @main;
 }
 .navigation-single { margin: 0 0 20px; }
 .navigation-archive {}
@@ -421,10 +461,9 @@ h4.comments-title {
 .author-box .right h4 {
 	margin: 0 0 5px;
 }
-/* -----------------------------------------------------------------------------
-    SIDEBAR
-------------------------------------------------------------------------------*/
 
+/*--- SIDEBAR
+----------------------------------------------------------------------------*/
 #sidebar .widget {
     margin: 0 0 20px;
 }
@@ -435,22 +474,22 @@ h4.comments-title {
 #sidebar .widget li {
 	list-style: none;
 	padding: 5px 0; margin: 0;
-	border-bottom: 1px dotted #eb2f7d;
+	border-bottom: 1px dotted @main;
 }
 #sidebar .widget li:first-child {
-	border-top: 1px dotted #eb2f7d;
+	border-top: 1px dotted @main;
 }
 #sidebar .widget li ul {
 	list-style: none;
 	padding: 4px 0; margin: 0 0 0 10px;
 }
-/* -----------------------------------------------------------------------------
-    FOOTER
-------------------------------------------------------------------------------*/
+
+/*--- FOOTER
+----------------------------------------------------------------------------*/
 #footer {
 	color: #f9f9f9;
     background: #262626;
-    border-top: 5px solid #eb2f7d;
+    border-top: 5px solid @main;
     margin: 0px 0; padding: 0px 0;
     width: 100%; clear: both; 
 }
@@ -460,7 +499,7 @@ h4.comments-title {
 }
 #footer a:hover, 
 #footer a:active {
-    color:  #b5d51f;
+    color:  @alt;
 }
 #footer .inner {
     width: 980px; overflow: auto;
@@ -468,7 +507,7 @@ h4.comments-title {
 }
 #footer .inner:last-child { border-top: 1px dotted #c69acb; padding: 15px 0 40px; }
 #footer .inner img {
-    border: 1px solid #eb2f7d;
+    border: 1px solid @main;
     max-width: 223px !important;
 }
 #footer .inner .one,
@@ -520,9 +559,8 @@ h4.comments-title {
 #footer .inner .left li { margin: 0 10px 0 0; padding: 0; list-style: none; display: inline; }
 #footer .inner .right li { margin: 0 0 0 10px; padding: 0; list-style: none; display: inline; }
 
-/* -----------------------------------------------------------------------------
-    SEARCH FORM
-------------------------------------------------------------------------------*/
+/*--- SEARCH FORM
+----------------------------------------------------------------------------*/
 #search { padding: 0; margin: 0; }
 form#searchform { overflow: auto; }
 input#searchfield {
@@ -537,9 +575,8 @@ input#searchsubmit {
 }
 input#searchsubmit:hover { background: #ccc; }
 
-/* -----------------------------------------------------------------------------
-    COMMENTS
-------------------------------------------------------------------------------*/
+/*--- COMMENTS
+----------------------------------------------------------------------------*/
 #comments { clear: both; }
 #comments p.nopassword { margin: 5px 0; }
 #comments p.nocomments { margin: 5px 0; }
@@ -550,7 +587,7 @@ input#searchsubmit:hover { background: #ccc; }
 #commentsform p { line-height: 21px; margin: 0 0 10px; overflow: auto; }
 
 #commentsform form label { 
-	color: #eb2f7d;
+	color: @main;
 	margin: 1px 0 0; padding: 5px 0;
 	display: block;  
 }
@@ -559,19 +596,19 @@ input#email,
 input#url,
 input#submit,
 textarea#comment {
-    color: #eb2f7d;
-    border: 1px solid #eb2f7d; border-radius: 3px; -moz-border-radius: 3px;
+    color: @main;
+    border: 1px solid @main; .rounded;
     padding: 10px;
     display: block; 
     width: 628px; 
 }
 input#submit { 
 	color: #fff; text-transform: uppercase; 
-	background: #eb2f7d;
+	background: @main;
 	width: 650px;  
 }
 input#submit:hover { 
-	color: #262626; background: #eb2f7d;
+	color: #262626; background: @main;
 }
 
 /*-COMMENTS LIST------------*/
@@ -584,7 +621,7 @@ li.comment,
 li.trackback, 
 li.pingback { 
     margin: 20px 0 20px 0; padding: 10px;
-    border: 1px solid #bcbcbc; border-radius: 4px; -moz-border-radius: 4px;
+    border: 1px solid #bcbcbc; .rounded;
     background: #dedede;
 }
 ul.children { margin: 0 0 0 10px; }
@@ -613,7 +650,7 @@ li.alt {
 img.avatar { 
     float: left; 
     margin: 0 10px 0 0; 
-    border: 1px solid #fff; border-radius: 4px; -moz-border-radius: 4px;
+    border: 1px solid #fff; .rounded;
 }
 .comment-entry .comment-meta { 
     font-size: 90%;
@@ -633,9 +670,8 @@ img.avatar {
 ul.commentlist .bypostauthor { border: 1px solid #000; color: #000; }
 ul.commentlist .bypostauthor .avatar img {}
 
-/* -----------------------------------------------------------------------------
-	THEME FUNCTIONS
------------------------------------------------------------------------------ */
+/*--- THEME FUNCTIONS-SHORTCODES
+----------------------------------------------------------------------------*/
 /*top ad*/
 #header .right img {
    margin: 0px 0 0;

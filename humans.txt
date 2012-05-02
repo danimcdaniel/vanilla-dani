@@ -1,0 +1,16 @@
+/* TEAM */
+Your title: Dani McDaniel
+Site: dani.mcdaniel@gmail.com, http://danimcdaniel.com/contact-me/
+Twitter: @dani
+Location: Tulsa, USA
+
+ 
+/* THANKS */
+Name: name or url
+
+ 
+/* SITE */
+Last update: YYYY/MM/DD
+Standards: HTML5, CSS3,..
+Components: Modernizr, jQuery, etc.
+Software: Structurer Pro, CodeKit, Espresso

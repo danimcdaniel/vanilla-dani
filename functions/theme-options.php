@@ -176,7 +176,7 @@ add_menu_page($themename." Theme Options", "".$themename." Theme Options", 'admi
 
 function mytheme_add_init() {
 $file_dir=get_bloginfo('template_directory');
-wp_enqueue_style("functions", $file_dir."/css/functions.css", false, "1.0", "all");
+wp_enqueue_style("functions", $file_dir."/css/admin.css", false, "1.0", "all");
 wp_enqueue_script("rm_script", $file_dir."/js/rm_script.js", false, "1.0");
 }
 //END VIEW ADMIN PANEL

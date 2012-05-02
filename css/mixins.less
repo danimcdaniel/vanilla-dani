@@ -1,0 +1,107 @@
+//----------------------------------------------------------------------------
+//	DEFAULT LESS FILE FOR ME PROJECTS.. 
+//	References: http://lesscss.org/#docs, 
+//	http://designshack.net/articles/css/10-less-css-examples-you-should-steal-for-your-projects/
+//----------------------------------------------------------------------------
+
+//----- VARIABLES -----//
+
+//--- Colors
+@main: #eb2f7d;
+@alt: #b5d51f;
+
+//--- Font stacks
+@serif: "Georgia", Cambria, "Times New Roman", Times, serif;
+@sans-serif: "Helvetica Neue", "HelveticaNeue", helvetica, sans-serif;
+@monospace: Monaco, Consolas, monospace;
+
+//----- MIXINS -------//
+
+//--- Helpers
+.hide-text () {
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+//--- Borders
+.rounded(@radius:3px) {
+    -webkit-border-radius:@radius;
+    -moz-border-radius:@radius;
+    border-radius:@radius;
+}
+.rounded-custom(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+	-webkit-border-top-right-radius: @topright;
+	-webkit-border-bottom-right-radius: @bottomright;
+	-webkit-border-bottom-left-radius: @bottomleft;
+	-webkit-border-top-left-radius: @topleft;
+	-moz-border-radius-topright: @topright;
+	-moz-border-radius-bottomright: @bottomright;
+	-moz-border-radius-bottomleft: @bottomleft;
+	-moz-border-radius-topleft: @topleft;
+	border-top-right-radius: @topright;
+	border-bottom-right-radius: @bottomright;
+	border-bottom-left-radius: @bottomleft;
+	border-top-left-radius: @topleft;
+}
+
+//--- Shadows
+.text-shadow(@x: 0px, @y:1px, @blur:1x, @color: #fff) {
+    text-shadow: @arguments;
+}
+
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #262626) {
+	box-shadow: @arguments;
+	-moz-box-shadow: @arguments;
+	-webkit-box-shadow: @arguments;
+}
+
+//--- Content columns
+.columns(@columncount, @columngap: 20px) {
+  	-webkit-column-count: @columncount;
+    -moz-column-count: @columncount;
+    column-count: @columncount;
+    -webkit-column-gap: @columngap;
+  	-moz-column-gap: @columngap;
+    column-gap: @columngap;
+}
+
+//--- Effects
+.opacity(@opacity: 0.5) {
+	-moz-opacity: @opacity;
+	-khtml-opacity: @opacity;
+	-webkit-opacity: @opacity;
+	opacity: @opacity;
+}
+.reflect (@length: 20%, @opacity: 0.2){
+	-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(@length, transparent), to(rgba(255,255,255,@opacity)));
+}
+.transition (@prop: all, @time: 1s, @ease: linear) {
+	-webkit-transition: @arguments;
+	-moz-transition: @arguments;
+	-o-transition: @arguments;
+	-ms-transition: @arguments;
+	transition: @arguments;
+}
+.rotate(@deg: 7deg){
+	-webkit-transform: rotate(@deg);
+	-moz-transform: rotate(@deg);
+	-o-transform: rotate(@deg);
+	transform: rotate(@deg);
+}
+
+//--- Gradients
+.gradient (@origin: left, @start: #ffffff, @stop: #000000) {
+	background-color: @start;
+	background-image: -webkit-linear-gradient(@origin, @start, @stop);
+	background-image: -moz-linear-gradient(@origin, @start, @stop);
+	background-image: -o-linear-gradient(@origin, @start, @stop);
+	background-image: -ms-linear-gradient(@origin, @start, @stop);
+	background-image: linear-gradient(@origin, @start, @stop);
+}
+.quick-gradient (@origin: left, @alpha: 0.2) {
+	background-image: -webkit-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: -moz-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: -o-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: -ms-linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+	background-image: linear-gradient(@origin, rgba(0,0,0,0.0), rgba(0,0,0,@alpha));
+}

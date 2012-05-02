@@ -20,6 +20,7 @@
 	} else {
 	    echo '<meta name="robots" content="noindex,follow" />';
 	} ?> 
+	<link type="text/plain" rel="author" href="<?php echo bloginfo('url'); ?>/humans.txt" />
 	<!-- END DUPLICATE CONTENT -->
 	<?php wp_head(); //leave for plugins ?>
 	<!-- THEME OPTIONS CUSTOM CSS -->
