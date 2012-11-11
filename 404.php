@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="posts-wrap">
+<div id="content">
 	
 		<div <?php post_class('post-error'); ?>>
 	         <h2 class="entry-title error-title">
@@ -11,6 +11,7 @@
             	<?php get_search_form(); ?>
       		</div>
        </div>
-</div><!-- end #posts-wrap -->
+       
+</div><!-- end #content -->
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

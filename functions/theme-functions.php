@@ -94,7 +94,7 @@ function dimox_breadcrumbs() {
     echo '</div>';
   }
 }
-//GET FIRST IMAGE IN POST
+//GET FIRST IMAGE IN POST if no featured image
 function getImage($num) {
 global $more;
 $more = 1;

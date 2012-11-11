@@ -4,7 +4,7 @@ Template Name: Full Page
 */
 ?>
 <?php get_header(); ?>
-<div id="posts-wrap-full">
+<div id="content-full">
 	<?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?> <!-- BREADCRUMBS in functions.php -->
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?> <!-- Start loop -->
 		<div id="post-<?php the_ID(); ?>" <?php post_class('post-full'); ?>>

@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="posts-wrap">
+<div id="content">
    <?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?> <!-- BREADCRUMBS in functions.php -->
    <?php if (have_posts()) : ?>
    <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
@@ -75,6 +75,6 @@
 		<?php get_search_form(); ?> 
 	</div>
 	<?php endif; ?>
-</div><!-- end #posts-wrap -->
+</div><!-- end #content -->
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

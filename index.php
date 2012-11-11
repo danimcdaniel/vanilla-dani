@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="posts-wrap">
+<div id="content">
 	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class('post-index'); ?>>
 			<h2 class="entry-title index-title">
@@ -41,6 +41,6 @@
 			<?php get_search_form(); ?> 
 		</div>
 	<?php endif; ?>
-</div><!-- end #posts-wrap -->
+</div><!-- end #content -->
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

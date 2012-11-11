@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<!-- begin Modernizr. -->
 <!--[if lt IE 7 ]> <html class="ie ie6 no-js" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie ie7 no-js" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie ie8 no-js" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie ie9 no-js" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 7 ]> <html class="ie ie7 no-js" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 8 ]> <html class="ie ie8 no-js" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 9 ]> <html class="ie ie9 no-js" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 9]><!--><html class="no-js" <?php language_attributes(); ?>><!--<![endif]-->
-<!-- the "no-js" class is for Modernizr. -->
+<!-- end Modernizr. -->
 
 <head profile="http://gmpg.org/xfn/11">
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -55,6 +56,7 @@
 		         echo ' - page '. $paged; }
 		   ?>">
 	<meta name="description" content="<?php bloginfo('description'); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
 	<meta name="google-site-verification" content="">
 	<!-- Speaking of Google, don't forget to set your site up: http://google.com/webmasters -->
@@ -64,11 +66,13 @@
 
 	<!-- CSS: screen, mobile & print are all in the same file -->
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+	<!-- CSS: includes colors for theme options -->
 	<link rel="stylesheet" type="text/css"  href="<?php bloginfo('template_directory'); ?>/css/colors/<?php echo get_option('dm_color_scheme'); ?>.css" />
+	<!-- Theme Options: favicon -->
 	<link rel="icon" type="image/vnd.microsoft.icon" href="<?php echo stripslashes(get_option('dm_favicon')); ?>" />
 	
 	<!-- all our JS is at the bottom of the page, except for Modernizr. -->
-	<script src="<?php bloginfo('template_directory'); ?>/js/modernizr-1.7.min.js"></script>
+	<script src="<?php bloginfo('template_directory'); ?>/js/modernizr.js"></script>
 	
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	
@@ -93,16 +97,14 @@
 
 
 <body <?php body_class(); ?>>
-<div id="wrapper">
+<div id="container">
     <div id="header">
+    	<?php wp_nav_menu(
+            array(
+                  'theme_location' => 'top-menu',
+                  'container_class' => 'topnav'
+        )); ?>
         <div class="right">
-            <?php wp_nav_menu(
-                array(
-                    'theme_location' => 'top-menu',
-                    'container' => '',
-                    'menu_class' => '',
-                    'menu' => '',
-                )); ?>
             <?php if ( get_option('dm_hdrad_disable') == 'true') { ?>
             <?php } else { ?>
                 <?php echo stripslashes(get_option('dm_header_ad')); ?>
@@ -118,12 +120,9 @@
                 <h2><?php bloginfo('description'); ?></h2>
 			<?php } ?>
          </div>
+         <?php wp_nav_menu(
+			 array(
+			      'theme_location' => 'main-menu',
+				  'container_class' => 'mainnav'
+		  )); ?>
     </div><!-- END #header -->
-     
-	<?php wp_nav_menu(
-	   array(
-	      'theme_location' => 'main-menu',
-		  'container_id' => 'mainnav',
-		  'menu_class' => '',
-		  'menu' => '',
-	)); ?>

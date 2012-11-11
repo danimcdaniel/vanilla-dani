@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div id="posts-wrap">
+<div id="content">
 	<?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?> <!-- BREADCRUMBS in functions.php -->
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?> <!-- Start loop -->
 		<div id="post-<?php the_ID(); ?>" <?php post_class('post-page'); ?>>
@@ -15,6 +15,6 @@
 		</div><!-- end .post -->
 	<?php if (function_exists('comments_template')) comments_template( '', true ); ?>
 	<?php endwhile; endif; ?>
-</div><!-- end #posts-wrap -->
+</div><!-- end #content -->
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

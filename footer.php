@@ -1,22 +1,22 @@
-</div> <!-- END #wrapper -->
+</div> <!-- END #content -->
 
 <div id="footer">
-   <div class="inner">
-      <div class="four">
+   <div class="footer-widgets">
+      <div class="block four">
             <?php dynamic_sidebar('footer-four'); ?>
       </div>
-      <div class="three">
+      <div class="block three">
             <?php dynamic_sidebar('footer-three'); ?>
       </div>
-      <div class="one">
+      <div class="block one">
             <?php dynamic_sidebar('footer-one'); ?>
       </div>
-      <div class="two">
+      <div class="block two">
             <?php dynamic_sidebar('footer-two'); ?>
       </div>
    </div>
 
-   <div class="inner">
+   <div class="footer-content">
       <div class="right">
          <ul>
             <li><a href="#wrapper">Back to Top</a></li>

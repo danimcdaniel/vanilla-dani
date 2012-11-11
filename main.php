@@ -4,10 +4,10 @@ Template Name: Main Home Page
 */
 ?>
 <?php get_header(); ?>
-   <div id="posts-wrap">
+   <div id="content">
 
          this is the home page and its the bare minimum html etc.
 
-   </div><!-- end #posts-wrap -->
+   </div><!-- end #content -->
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

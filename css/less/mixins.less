@@ -1,29 +1,43 @@
 //----------------------------------------------------------------------------
-//	DEFAULT LESS FILE FOR ME PROJECTS.. 
+//	.less MIXINS by Me and the awesome ppl below :) 
 //	References: http://lesscss.org/#docs, 
 //	http://designshack.net/articles/css/10-less-css-examples-you-should-steal-for-your-projects/
 //----------------------------------------------------------------------------
 
-//----- VARIABLES -----//
+//***** VARIABLES *****//
 
-//--- Colors
-@main: #eb2f7d;
-@alt: #b5d51f;
+//-- Colors
+@text: #444;
+@alttext: #ccc;
+@heading: #8a63ff;
+@altheading: #c420ff;
+@link: #393fff;
+@altlink: #ffc8f4;
+@hover: #528e5f;
+@background: #262626;
+@border: #ccc;
+@altborder: #999;
 
-//--- Font stacks
+//-- Font stacks
 @serif: "Georgia", Cambria, "Times New Roman", Times, serif;
 @sans-serif: "Helvetica Neue", "HelveticaNeue", helvetica, sans-serif;
 @monospace: Monaco, Consolas, monospace;
 
-//----- MIXINS -------//
+//***** MIXINS *****//
 
-//--- Helpers
+//-- Helpers
 .hide-text () {
     overflow: hidden;
     text-indent: -9999px;
 }
 
-//--- Borders
+//-- Fixes
+.inline-block () {
+	display: inline-block;
+	zoom:1; *display: inline;
+}
+
+//-- Borders
 .rounded(@radius:3px) {
     -webkit-border-radius:@radius;
     -moz-border-radius:@radius;
@@ -44,7 +58,7 @@
 	border-top-left-radius: @topleft;
 }
 
-//--- Shadows
+//-- Shadows
 .text-shadow(@x: 0px, @y:1px, @blur:1x, @color: #fff) {
     text-shadow: @arguments;
 }
@@ -55,7 +69,7 @@
 	-webkit-box-shadow: @arguments;
 }
 
-//--- Content columns
+//-- Content columns
 .columns(@columncount, @columngap: 20px) {
   	-webkit-column-count: @columncount;
     -moz-column-count: @columncount;
@@ -89,7 +103,7 @@
 	transform: rotate(@deg);
 }
 
-//--- Gradients
+//-- Gradients
 .gradient (@origin: left, @start: #ffffff, @stop: #000000) {
 	background-color: @start;
 	background-image: -webkit-linear-gradient(@origin, @start, @stop);
