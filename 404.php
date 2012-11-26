@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div id="content">
 	
-		<div <?php post_class('post-error'); ?>>
+		<div class="error">
 	         <h2 class="entry-title error-title">
 	            Error 404 - Not Found<br />
 	            The page you were looking for has either been deleted or moved

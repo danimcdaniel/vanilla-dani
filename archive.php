@@ -33,11 +33,11 @@
 		?>
 
 	<?php while (have_posts()) : the_post(); ?>
-	<div id="post-<?php the_ID(); ?>" <?php post_class('post-archive'); ?>>
+	<div id="post-<?php the_ID(); ?>" <?php post_class('archive'); ?>>
 		<h2 class="entry-title archive-title">
 			<a href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
 		</h2>
-		<div class="additional-meta additional-meta-archive">
+		<div class="additional-meta archive-additional-meta">
 			Posted on <?php the_time('F jS, Y') ?> by <?php the_author() ?>
 		</div>
 
@@ -47,7 +47,7 @@
 			<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:'), 'after' => '</div>' ) ); ?>
 		</div><!-- end .entry-content -->
 
-        <div class="entry-meta entry-meta-archive">
+        <div class="entry-meta archive-meta">
 			<ul>
 			<li>Posted in <?php the_category(', ') ?></li>
 				<li><?php comments_popup_link( __( 'No Comments', 'blank' ), __( '1 Comment', 'blank' ), __( '% Comments', 'blank' ), 'comments-link', __('Comments closed', 'blank')); ?></li>
@@ -60,7 +60,7 @@
 
 	<?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); ?>
 	<?php } else { ?>
-		<div class="navigation navigation-archive">
+		<div class="navigation archive-navigation">
 			<div class="nav-prev"><?php next_posts_link( __('Older Entries', 'blank')) ?></div>
 			<div class="nav-next"><?php previous_posts_link( __('Newer Entries', 'blank')) ?></div>
 		</div>

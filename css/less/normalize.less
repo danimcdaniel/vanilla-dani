@@ -140,14 +140,15 @@ samp {
 }
 
 //---Improves readability of pre-formatted text in all browsers
-
-
 pre {
-    white-space: pre;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+	/*- wraps long code strings so it doesnt break the layout 
+	reference: http://www.longren.org/wrapping-text-inside-pre-tags/ -*/
+	white-space: pre-wrap;       /* Chrome & Safari */
+    white-space: -moz-pre-wrap;  /* Mozilla since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
-
 
 //---1. Addresses CSS quotes not supported in IE6/7
 q {

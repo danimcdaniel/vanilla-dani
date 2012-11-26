@@ -863,9 +863,24 @@ samp {
   font-size: 1em;
 }
 pre {
-  white-space: pre;
+  /*- wraps long code strings so it doesnt break the layout 
+	reference: http://www.longren.org/wrapping-text-inside-pre-tags/ -*/
+
   white-space: pre-wrap;
+  /* Chrome & Safari */
+
+  white-space: -moz-pre-wrap;
+  /* Mozilla since 1999 */
+
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+
   word-wrap: break-word;
+  /* Internet Explorer 5.5+ */
+
 }
 q {
   quotes: none;
@@ -1011,8 +1026,11 @@ styles to highlight divs
 #content {
   background: #fff3d1;
 }
-.post {
+#content .post {
   background: #cafbff;
+}
+#content .author-box {
+  background: #f9f9f9 !important;
 }
 #footer {
   background: #bee7ff;
@@ -1022,6 +1040,15 @@ styles to highlight divs
 }
 /*--- THE BASICS
 -------------------------------------------------------------------:-)*/
+/*-- fixes box model to normal 
+reference: http://paulirish.com/2012/box-sizing-border-box-ftw/ --*/
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 html {
   font-size: 62.5%;
 }
@@ -1035,6 +1062,21 @@ body {
   margin: 0 auto;
   padding: 0px;
 }
+blockquote {
+  font-family: "Georgia", Cambria, "Times New Roman", Times, serif;
+  font-style: italic;
+  margin: 10px 0px 10px 50px;
+  padding: 0 0 0 15px;
+  border-left: 3px solid #cccccc;
+  width: 80%;
+  clear: both;
+}
+q:before {
+  content: "\201c";
+}
+q:after {
+  content: "\201d";
+}
 img {
   max-width: 100%;
   height: auto;
@@ -1042,12 +1084,71 @@ img {
   /* ie8 */
 
 }
-table {
-  margin: 0 0 20px;
-  width: 100%;
-}
 p {
   margin: 0 0 10px;
+}
+pre,
+code {
+  margin: 20px auto;
+  width: 80%;
+}
+dl {
+  margin: 1em 0;
+}
+dl dt {
+  font-weight: bold;
+  text-decoration: underline;
+}
+dl dd {
+  margin: 0 0 10px;
+}
+ol {
+  margin: 0;
+}
+ol li {
+  list-style: decimal inside none;
+}
+ol ol {
+  margin: 0 0 0 10px;
+}
+ul {
+  margin: 0 0 0 0px;
+}
+ul li {
+  list-style: disc inside none;
+}
+ul ul {
+  margin: 0 0 0 10px;
+}
+table {
+  width: 90%;
+  border-top: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  margin: 1em auto;
+  border-collapse: collapse;
+}
+table tr {
+  /* targets even rows */
+
+  /* targets odd rows */
+
+}
+table tr td {
+  border-bottom: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  padding: .3em 1em;
+}
+table tr th {
+  border-bottom: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  font-weight: bold;
+  text-align: center;
+}
+table tr:nth-child(even) {
+  background: #fff;
+}
+table tr:nth-child(odd) {
+  background: #fafafa;
 }
 /*- links 
 ----------------------------*/
@@ -1148,6 +1249,10 @@ body {
   overflow: auto;
   width: 100%;
 }
+#container {
+  /*-- start sidebar --*/
+
+}
 #container #header .left {
   float: left;
   width: 50%;
@@ -1160,22 +1265,14 @@ body {
 #container #header .topnav {
   padding: 10px 0;
 }
-#container #header .topnav ul {
-  margin: 0;
-  padding: 0;
-}
 #container #header .topnav li {
   display: inline;
   list-style: none;
-  padding: 0 0 0 10px;
+  padding: 0 10px 0 0;
 }
 #container #header .mainnav {
   clear: both;
   padding: 10px 0;
-}
-#container #header .mainnav ul {
-  margin: 0;
-  padding: 0;
 }
 #container #header .mainnav li {
   display: inline;
@@ -1185,38 +1282,63 @@ body {
 #container #content {
   float: left;
   width: 65%;
+  /*-- Generic Post --*/
+
   /*-- Single Post --*/
+
+  /*-- Index List Post --*/
+
+  /*-- Archive List Post --*/
+
+  /*-- Search List Post --*/
+
+  /*-- author box --*/
+
+  /*-- post navigation --*/
 
   /*-- single post navigation --*/
 
-}
-#container #content .post {
-  /*-- author box --*/
+  /*-- archive post navigation --*/
+
+  /*-- search navigation --*/
+
+  /*-- comment navigation --*/
+
+  /*-- Pages --*/
+
+  /*-- the 404 --*/
 
 }
-#container #content .post .author-box {
+#container #content .author-box {
   background: none;
-  border-top: 4px solid #cccccc;
-  padding: 20px 0 0;
+  padding: 10px 0 10px;
   margin: 20px 0;
+}
+#container #content .author-box .author-title {
   overflow: auto;
+  padding: 0 0 10px;
 }
-#container #content .post .author-box .author-meta {
-  color: #666;
-  font-style: italic;
-  font-size: 95%;
-  margin: 5px 0 0;
-}
-#container #content .post .author-box .left {
-  float: left;
-  width: 90px;
-}
-#container #content .post .author-box .right {
-  float: right;
-  width: 550px;
-}
-#container #content .post .author-box .right h4 {
+#container #content .author-box .author-title h4 {
   margin: 0 0 5px;
+}
+#container #content .author-box .author-title ul {
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+#container #content .author-box .author-title ul li {
+  display: inline;
+  padding: 0 10px 0 0;
+}
+#container #content .author-box .author-title .avatar {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+#container #content .author-box .author-content {
+  border-top: 2px solid #cccccc;
+  padding: 10px 0 0;
+}
+#container #content .author-box .author-content p {
+  margin: 10px 0 0;
 }
 #container #content .navigation {
   width: 100%;
@@ -1235,18 +1357,13 @@ body {
   width: 48%;
   text-align: left;
 }
-#container #content .navigation-single {
-  margin: 0 0 20px;
+#container #content .error {
+  /*-- includes .search located within this stylesheet --*/
+
 }
 #container #sidebar {
   float: right;
   width: 35%;
-}
-#container #sidebar ul {
-  margin-left: 10px;
-}
-#container #sidebar li {
-  list-style: disc inside none;
 }
 #footer {
   clear: both;
@@ -1255,19 +1372,19 @@ body {
   overflow: auto;
 }
 #footer .footer-widgets .block {
-  width: 22%;
+  width: 22.2%;
 }
 #footer .footer-widgets .block.one {
   float: left;
-  margin-right: 40px;
+  margin-right: 3.7%;
 }
 #footer .footer-widgets .block.two {
   float: left;
-  margin-right: 40px;
+  margin-right: 3.7%;
 }
 #footer .footer-widgets .block.three {
   float: right;
-  margin-right: 40px;
+  margin-right: 3.7%;
 }
 #footer .footer-widgets .block.four {
   float: right;
@@ -1293,16 +1410,35 @@ body {
 /*- Search Form 
 (searchform.php)
 ----------------------------*/
+.search {
+  margin: 10px 0;
+  overflow: auto;
+}
+.search .searchform {
+  float: right;
+  overflow: auto;
+  width: 50%;
+}
+.search .searchform .searchinput {
+  float: left;
+  width: 74%;
+}
+.search .searchform .searchsubmit {
+  float: right;
+  width: 24%;
+}
+/*--- Theme Options
+-------------------------------------------------------------------:-)*/
+#container #sidebar .ad-block ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#container #sidebar .ad-block ul li {
+  display: inline;
+}
 /*--- Responsive-ness
 -------------------------------------------------------------------:-)*/
 @media only screen and (max-width: 480px) {
-  a {
-    /*-- to add area to link for better clickability 
-  		reference: http://joshnh.com/2012/09/06/increasing-the-clickable-area-of-inline-links/ --*/
   
-    margin: -0.5em;
-    padding: .5em;
-    position: relative;
-    text-decoration: none;
-  }
 }

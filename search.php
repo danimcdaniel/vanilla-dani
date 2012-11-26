@@ -5,18 +5,18 @@
 	<h1 class="archive-title">
 		Search Results:
 	</h1>
-	<div id="post-<?php the_ID(); ?>" <?php post_class('post-search'); ?>>
+	<div id="post-<?php the_ID(); ?>" <?php post_class('search'); ?>>
 		<h2 class="entry-title search-title">
 			<a href="<?php the_permalink() ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
 		</h2>
-		<div class="additional-meta additional-meta-search">
+		<div class="additional-meta search-additional-meta">
 			Posted on <?php the_time('F jS, Y') ?> by <?php the_author() ?>
 		</div>
 		<div class="entry-content search-content">
 			<?php if (has_post_thumbnail()) { the_post_thumbnail(); } ?>
 			<?php the_excerpt(); ?>
 		</div><!-- end .entry-content -->
-		<div class="entry-meta entry-meta-search">
+		<div class="entry-meta search-meta">
 			<ul>
 			<li>Posted in <?php the_category(', ') ?></li>
 				<li><?php comments_popup_link( __( 'No Comments', 'blank' ), __( '1 Comment', 'blank' ), __( '% Comments', 'blank' ), 'comments-link', __('Comments closed', 'blank')); ?></li>
@@ -29,7 +29,7 @@
 
 	<?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); ?>
 	<?php } else { ?>
-	<div class="navigation navigation-search">
+	<div class="navigation search-navigation">
 		<div class="nav-prev"><?php next_posts_link( __('Older Entries', 'blank')) ?></div>
 		<div class="nav-next"><?php previous_posts_link( __('Newer Entries', 'blank')) ?></div>
 	</div>

@@ -17,25 +17,29 @@ TABLE OF CONTENTS
 - Adds NoFollow
 ----------------------------------------------------------------------------------------------*/
 
-//--PATH TO THEME SPECIFIC FUNCTION FILES-----------------------------------------------------*/
+//-- PATH TO THEME SPECIFIC FUNCTION FILES
+//-----------------------------------------------------*/
 $functions_path = TEMPLATEPATH . '/functions/';
 require_once ($functions_path . 'includes.php');
 
-//--ADD FEED LINKS TO HEADER------------------------------------------------------------------*/
+//--ADD FEED LINKS TO HEADER
+//-----------------------------------------------------*/
 if (function_exists('automatic_feed_links')) {
 	automatic_feed_links();
 } else {
 	return;
 }
 
-//--SMART JQUERY INCLUSION--------------------------------------------------------------------*/
+//--SMART JQUERY INCLUSION
+//-----------------------------------------------------*/
 if (!is_admin()) {
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"), false, '1.3.2');
 	wp_enqueue_script('jquery');
 }
 
-//--REMOVE JUNK FROM HEAD---------------------------------------------------------------------*/
+//--REMOVE JUNK FROM HEAD
+//-----------------------------------------------------*/
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'feed_links', 2);
@@ -46,7 +50,8 @@ remove_action('wp_head', 'start_post_rel_link', 10, 0);
 remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 
-//--ADD GOOGLE ANALYTICS TO FOOTER-------------------------------------------------------------*/
+//--ADD GOOGLE ANALYTICS TO FOOTER
+//-----------------------------------------------------*/
 function add_google_analytics() {
 	echo '<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script>';
 	echo '<script type="text/javascript">';
@@ -56,25 +61,29 @@ function add_google_analytics() {
 }
 add_action('wp_footer', 'add_google_analytics');
 
-//--ADD THUMBNAIL SUPPORT----------------------------------------------------------------------*/
+//--ADD THUMBNAIL SUPPORT
+//-----------------------------------------------------*/
 add_theme_support( 'post-thumbnails' );
 add_image_size( 'blog-thumbnail', 628, 150, true );
 add_image_size( 'single-post-thumbnail', 628, 9999 );
 
-//--CUSTOM EXCERPT LENGTH----------------------------------------------------------------------*/
+//--CUSTOM EXCERPT LENGTH
+//-----------------------------------------------------*/
 function custom_excerpt_length($length) {
 	return 20;
 }
 add_filter('excerpt_length', 'custom_excerpt_length');
 
-//--CHANGES WHAT COMES AT THE END OF THE EXCERPT-----------------------------------------------*/
+//--CHANGES WHAT COMES AT THE END OF THE EXCERPT
+//-----------------------------------------------------*/
 function new_excerpt_more($more) {
        global $post;
        return '<div class="more">' . '<a href="'. get_permalink($post->ID) . '">' . 'Read more &rsaquo;' . '</a>' . '</div>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
-//--ENABLE THREADED COMMENTS-------------------------------------------------------------------*/
+//--ENABLE THREADED COMMENTS
+//-----------------------------------------------------*/
 function enable_threaded_comments(){
 	if (!is_admin()) {
 		if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
@@ -83,39 +92,45 @@ function enable_threaded_comments(){
 }
 add_action('get_header', 'enable_threaded_comments');
 
-//--ENABLES SHORTCODES IN WIDGETS--------------------------------------------------------------*/
+//--ENABLES SHORTCODES IN WIDGETS
+//-----------------------------------------------------*/
 add_filter('widget_text', 'do_shortcode');
 
-//--ENSURES SHORTLINK DISPLAYS ACTUAL LINK-----------------------------------------------------*/
+//--ENSURES SHORTLINK DISPLAYS ACTUAL LINK
+//-----------------------------------------------------*/
 add_filter( 'the_shortlink', 'my_shortlink', 10, 4 );
 function my_shortlink( $link, $shortlink, $text, $title )
 {
 	return '<a rel="shortlink" href="' . esc_url( $shortlink ) . '" title="' . $title . '">' . $shortlink . '</a>';
 }
 
-//--LINK FOR ALL SETTINGS IN ADMIN-------------------------------------------------------------*/
+//--LINK FOR ALL SETTINGS IN ADMIN
+//-----------------------------------------------------*/
 function all_settings_link() {
 	add_options_page(__('All Settings'), __('All Settings'), 'administrator', 'options.php');
 }
 add_action('admin_menu', 'all_settings_link');
 
-//--ADDS POST FORMATS--------------------------------------------------------------------------*/
-add_theme_support(
+//--ADDS POST FORMATS
+//-----------------------------------------------------*/
+add_theme_support (
    'post-formats',
-    array(
-    'aside',
-    'chat',
-    'gallery',
-    'image',
-    'link',
-    'quote',
-    'status',
-    'video',
-    'audio'
-));
+	    array (
+	    'aside',
+	    'chat',
+	    'gallery',
+	    'image',
+	    'link',
+	    'quote',
+	    'status',
+	    'video',
+	    'audio'
+	)
+);
 
-//--ADDS NOFOLLOW--------------------------------------------------------------------------------
-//--source: http://digwp.com/2010/02/remove-nofollow-attributes-from-post-content/ -------------*/
+//--ADDS NOFOLLOW
+//--source: http://digwp.com/2010/02/remove-nofollow-attributes-from-post-content/
+//-----------------------------------------------------*/
 
 function remove_nofollow($string) {
 	$string = str_ireplace(' rel="nofollow"', '', $string);
@@ -125,5 +140,27 @@ add_filter('the_content', 'remove_nofollow');
 add_filter('comment_text', 'remove_nofollow');
 add_filter('comment_author_link', 'remove_nofollow'); 
 
-//--add a filter to remove nofollow-------------------------------------------------------------*/
+//--add a filter to remove nofollow
+//-----------------------------------------------------*/
+
+//--EXTENDS USER PROFILE
+//--source: http://wpmodder.com/how-to-add-and-delete-contact-info-fields-for-your-users-960.html
+//--source: http://www.thecreatology.com/how-to-extend-contact-details-of-author-profile-in-wordpress.html
+//--
+//--included: twitter, company
+//-----------------------------------------------------*/
+function extend_usercontact( $usercontact ) {
+
+//Add some fields
+$usercontact['company'] = 'Company';
+$usercontact['twitter'] = 'Twitter (no @)';
+ 
+//Remove AIM, Yahoo IM
+unset($usercontact['aim']);
+unset($usercontact['yim']);
+ 
+//make it go!
+return $usercontact;
+}
+add_filter('user_contactmethods','extend_usercontact',10,1);
 ?>

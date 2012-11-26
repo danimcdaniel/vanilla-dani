@@ -33,8 +33,8 @@ and the comment form.
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 <?php if(function_exists('wp_commentnavi')) { wp_commentnavi();  ?> 
    <?php } else { ?>
-   <div class="navigation navigation-comments">
-      <div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'blank' ) ); ?></div>
+   <div class="navigation comments-navigation">
+      <div class="nav-prev"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'blank' ) ); ?></div>
       <div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'blank' ) ); ?></div>
    </div><!-- .navigation -->
 <?php } ?>

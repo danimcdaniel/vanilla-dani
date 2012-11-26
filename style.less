@@ -24,17 +24,31 @@ styles to highlight divs
 }
 #sidebar { background: @altlink; }
 .widget { background: #eee1ff; }
-#content { background: #fff3d1; }
-.post { background: #cafbff; }
+#content { 
+	background: #fff3d1;
+	.post { background: #cafbff; }
+	.author-box { background: #f9f9f9 !important; }
+}
 #footer { background: #bee7ff; 
 	.footer-content { background: #d5ffdf; }
 }
 
 /*--- THE BASICS
 -------------------------------------------------------------------:-)*/
+/*-- fixes box model to normal 
+reference: http://paulirish.com/2012/box-sizing-border-box-ftw/ --*/
+*, 
+*:before, 
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 html {
 	font-size: 62.5%; 
 }
+
 body {
 	color: @text;
 	font-family: @sans-serif;
@@ -43,13 +57,74 @@ body {
 	margin: 0 auto;
 	padding: 0px;
 }
+
+blockquote { 
+    font-family: @serif; font-style: italic;
+    margin: 10px 0px 10px 50px; padding: 0 0 0 15px; 
+    border-left: 3px solid @border; 
+    width: 80%; clear: both; 
+}
+q:before { content: "\201c"; }
+q:after { content: "\201d"; }
+
 img {
 	max-width: 100%;
 	height: auto;
 	width: auto\9; /* ie8 */
 }
-table { margin: 0 0 20px; width: 100%; }
+
 p { margin: 0 0 10px; }
+
+pre,
+code {
+	margin: 20px auto;
+	width: 80%;
+}
+
+dl { margin: 1em 0;
+	dt { 
+		font-weight: bold; 
+		text-decoration: underline;
+	}
+	dd {
+		margin: 0 0 10px;
+	}
+}
+
+ol { margin: 0; 
+	li { list-style: decimal inside none; }
+	ol { margin: 0 0 0 10px; }
+}
+
+ul { margin: 0 0 0 0px; 
+	li { list-style: disc inside none; }
+	ul { margin: 0 0 0 10px; }
+}
+
+table {
+	width: 90%;
+	border-top: 1px solid @border;
+	border-right: 1px solid @border;
+	margin: 1em auto;
+	border-collapse: collapse;
+	tr { 
+		td {
+			border-bottom: 1px solid @border;
+			border-left: 1px solid @border;
+			padding: .3em 1em;
+		}
+		th {
+			border-bottom: 1px solid @border;
+			border-left: 1px solid @border;
+			font-weight: bold;
+			text-align: center;
+		}
+		/* targets even rows */
+		&:nth-child(even) { background: #fff; }
+		/* targets odd rows */
+		&:nth-child(odd) { background: #fafafa; }
+	}
+}
 
 /*- links 
 ----------------------------*/
@@ -104,47 +179,72 @@ body { padding: 0 40px 40px; max-width: 1024px; }
 		.right { float: right; text-align: right; width: 50%; }
 		.topnav { 
 			padding: 10px 0; 
-			ul { margin: 0; padding: 0; }
 			li {
-				display: inline; list-style: none; padding: 0 0 0 10px; 
+				display: inline; list-style: none; padding: 0 10px 0 0; 
 			}
 		}
 		.mainnav { 
 			clear: both; padding: 10px 0; 
-			ul { margin: 0; padding: 0; }
 			li { display: inline; list-style: none; padding: 0 10px 0 0; }
 		}
 	}
 	#content {
 		float: left; width: 65%;
-		/*-- Single Post --*/
+		/*-- Generic Post --*/
 		.post {
+			.entry-title {}
+			.additional-meta {}
+			.entry-content {}
+			.entry-meta {}
+		}
+		/*-- Single Post --*/
+		.single {
+			.single-title {}
+			.single-additional-meta {}
+			.single-content {}
+			.single-meta {}
+		}
+		/*-- Index List Post --*/
+		.index {
+			.index-title {}
+			.index-additional-meta {}
+			.index-content {}
+			.index-meta {}
+		}
+		/*-- Archive List Post --*/
+		.archive {
+			.archive-title {}
+			.archive-additional-meta {}
+			.archive-content {}
+			.archive-meta {}
+		}
+		/*-- Search List Post --*/
+		.search {
+			.search-title {}
+			.search-additional-meta {}
+			.search-content {}
+			.search-meta {}
+		}
 		/*-- author box --*/
-			.author-box {
-				background: none;
-				border-top: 4px solid @border;
-				padding: 20px 0 0; margin: 20px 0;
+		.author-box {
+			background: none;
+			padding: 10px 0 10px; margin: 20px 0;
+			.author-title {
 				overflow: auto;
-				.author-meta {
-					color: #666;
-					font-style: italic;
-					font-size: 95%;
-					margin: 5px 0 0;
+				padding: 0 0 10px;
+				h4 { margin: 0 0 5px; }
+				ul { margin: 0 0 5px 0; padding: 0; 
+					li { display: inline; padding: 0 10px 0 0; }
 				}
-				.left {
-					float: left;
-					width: 90px;
-				}
-				.right {
-					float: right;
-					width: 550px;
-				}
-				.right h4 {
-					margin: 0 0 5px;
-				}
+				.avatar { float: left; margin: 0 10px 10px 0; }
+			}
+			.author-content {
+				border-top: 2px solid @border;
+				padding: 10px 0 0;
+				p { margin: 10px 0 0; }
 			}
 		}
-		/*-- single post navigation --*/
+		/*-- post navigation --*/
 		.navigation {
 		    width: 100%;
 		    float: left; clear: both;
@@ -152,15 +252,42 @@ body { padding: 0 40px 40px; max-width: 1024px; }
 		    .nav-next { float: right; width: 48%; text-align: right; }
 		    .nav-prev { float: left; width: 48%; text-align: left; }
 		}
-		.navigation-single { margin: 0 0 20px; }
-		.navigation-archive {}
-		.navigation-comments {}
+		/*-- single post navigation --*/
+		.single-navigation {
+			.nav-next {}
+			.nav-prev {}
+		}
+		/*-- archive post navigation --*/
+		.archive-navigation {
+			.nav-next {}
+			.nav-prev {}
+		}
+		/*-- search navigation --*/
+		.search-navigation {
+			.nav-next {}
+			.nav-prev {}			
+		}
+		/*-- comment navigation --*/
+		.comments-navigation {
+			.nav-next {}
+			.nav-prev {}			
+		}
+		/*-- Pages --*/
+		.page {
+			.page-title {}
+			.page-content {}
+		}
+		/*-- the 404 --*/
+		.error {
+			.error-title {}
+			.error-content {}
+			/*-- includes .search located within this stylesheet --*/
+		}
 	}
+	/*-- start sidebar --*/
 	#sidebar {
 		float: right; 
 		width: 35%;
-		ul { margin-left: 10px; }
-		li { list-style: disc inside none; }
 	}
 }
 #footer {
@@ -168,18 +295,18 @@ body { padding: 0 40px 40px; max-width: 1024px; }
 	.footer-widgets {
 		overflow: auto;
 		.block {
-			width: 22%;
+			width: 22.2%;
 			&.one {
 				float: left;
-				margin-right: 40px;
+				margin-right: 3.7%;
 			}
 			&.two {
 				float: left;
-				margin-right: 40px;
+				margin-right: 3.7%;
 			}
 			&.three {
 				float: right;
-				margin-right: 40px;
+				margin-right: 3.7%;
 			}
 			&.four {
 				float: right;
@@ -204,24 +331,30 @@ body { padding: 0 40px 40px; max-width: 1024px; }
 /*- Search Form 
 (searchform.php)
 ----------------------------*/
-.search {
+.search { margin: 10px 0; overflow: auto;
 	.searchform {
-		.searchinput {}
-		.searchsubmit {}
+		float: right; overflow: auto; width: 50%;
+		.searchinput { float: left; width: 74%; }
+		.searchsubmit { float: right; width: 24%; }
 	}
 }
 
+/*--- Theme Options
+-------------------------------------------------------------------:-)*/
+#container {
+	#sidebar {
+		.ad-block {
+			ul { list-style: none; margin: 0; padding: 0; 
+				li { display: inline; }
+			}
+		}
+	}
+}
 
 /*--- Responsive-ness
 -------------------------------------------------------------------:-)*/
 @media only screen and (max-width: 480px) {
-	a {
-		/*-- to add area to link for better clickability 
-		reference: http://joshnh.com/2012/09/06/increasing-the-clickable-area-of-inline-links/ --*/
-	    margin: -.5em; padding: .5em;
-	    position: relative;
-		text-decoration: none; 
-	} 
+	 
 }
 
 

@@ -27,6 +27,7 @@ Vanilla Wordpress theme templates I use for developing Wordpress sites.
 * **css/admin.css** styles for the theme options
 * **css/colors/color.css** each individual color for color selection in theme options
 * **css/less/font-awesome.less** see http://fortawesome.github.com/Font-Awesome/
+* **css/less/normalize.less** see http://necolas.github.com/normalize.css/ 
 * **css/less/mixins.less** .less mixins collection
 * **css/less/wpcss.less** default wordpress .css styles
 * **functions/includes.php** used to include additional function files
@@ -38,3 +39,16 @@ Vanilla Wordpress theme templates I use for developing Wordpress sites.
 * **js/modernizr.js** see http://modernizr.com to customize
 * **js/rm_script.js** js for theme options
 
+**File by File:**
+-----------------
+Or at least the ones that need an explanation ;)
+
+**css/.less Files**
+
+
+	css/less/normalize.less
+	- unchanged from the original except for:
+	1. line 142 added additional browser support for pre tag
+	
+
+**Template Files**
