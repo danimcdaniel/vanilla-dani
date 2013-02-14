@@ -35,7 +35,7 @@ styles to highlight divs
 
 /*--- THE BASICS
 -------------------------------------------------------------------:-)*/
-/*-- fixes box model to normal 
+/*-- fixes box model to normal (take that ie)
 reference: http://paulirish.com/2012/box-sizing-border-box-ftw/ --*/
 *, 
 *:before, 
@@ -73,6 +73,7 @@ img {
 	width: auto\9; /* ie8 */
 }
 
+address,
 p { margin: 0 0 10px; }
 
 pre,
@@ -298,15 +299,15 @@ body { padding: 0 40px 40px; max-width: 1024px; }
 			width: 22.2%;
 			&.one {
 				float: left;
-				margin-right: 3.7%;
+				margin: 0 3.7% 0 0;
 			}
 			&.two {
 				float: left;
-				margin-right: 3.7%;
+				margin: 0 3.7% 0 0;
 			}
 			&.three {
 				float: right;
-				margin-right: 3.7%;
+				margin: 0 3.7% 0 0;
 			}
 			&.four {
 				float: right;
@@ -325,13 +326,13 @@ body { padding: 0 40px 40px; max-width: 1024px; }
 /*- Widgets
 ----------------------------*/
 .widget {
-
+	margin: 0 0 20px;
 }
 
 /*- Search Form 
 (searchform.php)
 ----------------------------*/
-.search { margin: 10px 0; overflow: auto;
+.search-container { margin: 10px 0; overflow: auto;
 	.searchform {
 		float: right; overflow: auto; width: 50%;
 		.searchinput { float: left; width: 74%; }
@@ -343,8 +344,8 @@ body { padding: 0 40px 40px; max-width: 1024px; }
 -------------------------------------------------------------------:-)*/
 #container {
 	#sidebar {
-		.ad-block {
-			ul { list-style: none; margin: 0; padding: 0; 
+		.ad-block { margin: 0 0 20px;
+			ul { list-style: none; margin: 0 auto; padding: 0; text-align: center;
 				li { display: inline; }
 			}
 		}
@@ -353,10 +354,39 @@ body { padding: 0 40px 40px; max-width: 1024px; }
 
 /*--- Responsive-ness
 -------------------------------------------------------------------:-)*/
+
+/*-- ipad (portrait) --*/
+@media only screen and (max-width: 768px) {
+	 #container {
+	 	 #header {
+	 	 	.right, .left { float: none; margin: 0 auto 20px; text-align: center; width: 100%; }
+	 	 	.topnav ul, 
+	 	 	.mainnav ul { margin: auto; text-align: center; }
+	 	 }
+		 #content { float: none; margin: 0 0 20px; width: 100%; }
+		 #sidebar { float: none; margin: 0 0 20px; width: 100%; }
+	 }
+	 #footer {
+		 .footer-widgets .block {  
+			 float: none; width: 100%;
+			 &.one, &.two, &.three, &.four { margin: 0; }
+		 }
+		 .footer-content {
+			 .left,
+			 .right { float: none; text-align: center; margin-bottom: 20px; width: 100%; }
+		 }
+	 }
+}
+
+/*-- iphone (landscape) --*/
 @media only screen and (max-width: 480px) {
 	 
 }
 
+/*-- iphone (portrait) --*/
+@media only screen and (max-width: 320px) {
+	 
+}
 
 
 

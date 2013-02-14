@@ -17,11 +17,7 @@
    </div>
 
    <div class="footer-content">
-      <div class="right">
-         <ul>
-            <li><a href="#wrapper">Back to Top</a></li>
-         </ul>
-      </div>
+      
       <div class="left">
          <?php wp_nav_menu( 
             array(
@@ -34,6 +30,13 @@
             <li><?php echo stripslashes(get_option('dm_rights_text')); ?></li>
          </ul>
       </div>
+      
+      <div class="right">
+         <ul>
+            <li><a href="#wrapper">Back to Top</a></li>
+         </ul>
+      </div>
+      
    </div>
 </div> <!-- END #footer -->
 <?php wp_footer(); //leave for plugins ?>

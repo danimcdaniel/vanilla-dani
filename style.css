@@ -725,10 +725,25 @@ ul.icons li .icon-large:before {
 .icon-user-md:before {
   content: "\f200";
 }
-/*---DEFAULT WORDPRESS STYLES-----------------------------------------------*/
+/*---DEFAULT WORDPRESS STYLES
+-------------------------------------------------------------------*/
 .wp-smiley {
   max-height: 1em;
   margin: 0 !important;
+}
+.aligncenter {
+  margin: auto;
+  text-align: center;
+}
+.alignleft {
+  float: left;
+  margin: 0 1.5% 0 0;
+  text-align: left;
+}
+.alignright {
+  float: right;
+  margin: 0 0 0 1.5%;
+  text-align: right;
 }
 .wp-caption {
   text-align: left;
@@ -1040,7 +1055,7 @@ styles to highlight divs
 }
 /*--- THE BASICS
 -------------------------------------------------------------------:-)*/
-/*-- fixes box model to normal 
+/*-- fixes box model to normal (take that ie)
 reference: http://paulirish.com/2012/box-sizing-border-box-ftw/ --*/
 *,
 *:before,
@@ -1084,6 +1099,7 @@ img {
   /* ie8 */
 
 }
+address,
 p {
   margin: 0 0 10px;
 }
@@ -1376,15 +1392,15 @@ body {
 }
 #footer .footer-widgets .block.one {
   float: left;
-  margin-right: 3.7%;
+  margin: 0 3.7% 0 0;
 }
 #footer .footer-widgets .block.two {
   float: left;
-  margin-right: 3.7%;
+  margin: 0 3.7% 0 0;
 }
 #footer .footer-widgets .block.three {
   float: right;
-  margin-right: 3.7%;
+  margin: 0 3.7% 0 0;
 }
 #footer .footer-widgets .block.four {
   float: right;
@@ -1407,38 +1423,92 @@ body {
 }
 /*- Widgets
 ----------------------------*/
+.widget {
+  margin: 0 0 20px;
+}
 /*- Search Form 
 (searchform.php)
 ----------------------------*/
-.search {
+.search-container {
   margin: 10px 0;
   overflow: auto;
 }
-.search .searchform {
+.search-container .searchform {
   float: right;
   overflow: auto;
   width: 50%;
 }
-.search .searchform .searchinput {
+.search-container .searchform .searchinput {
   float: left;
   width: 74%;
 }
-.search .searchform .searchsubmit {
+.search-container .searchform .searchsubmit {
   float: right;
   width: 24%;
 }
 /*--- Theme Options
 -------------------------------------------------------------------:-)*/
+#container #sidebar .ad-block {
+  margin: 0 0 20px;
+}
 #container #sidebar .ad-block ul {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  text-align: center;
 }
 #container #sidebar .ad-block ul li {
   display: inline;
 }
 /*--- Responsive-ness
 -------------------------------------------------------------------:-)*/
+/*-- ipad (portrait) --*/
+@media only screen and (max-width: 768px) {
+  #container #header .right,
+  #container #header .left {
+    float: none;
+    margin: 0 auto 20px;
+    text-align: center;
+    width: 100%;
+  }
+  #container #header .topnav ul,
+  #container #header .mainnav ul {
+    margin: auto;
+    text-align: center;
+  }
+  #container #content {
+    float: none;
+    margin: 0 0 20px;
+    width: 100%;
+  }
+  #container #sidebar {
+    float: none;
+    margin: 0 0 20px;
+    width: 100%;
+  }
+  #footer .footer-widgets .block {
+    float: none;
+    width: 100%;
+  }
+  #footer .footer-widgets .block.one,
+  #footer .footer-widgets .block.two,
+  #footer .footer-widgets .block.three,
+  #footer .footer-widgets .block.four {
+    margin: 0;
+  }
+  #footer .footer-content .left,
+  #footer .footer-content .right {
+    float: none;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+/*-- iphone (landscape) --*/
 @media only screen and (max-width: 480px) {
+  
+}
+/*-- iphone (portrait) --*/
+@media only screen and (max-width: 320px) {
   
 }
