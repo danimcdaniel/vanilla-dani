@@ -7,7 +7,8 @@ and the comment form.
 ?>
 <div id="comments">
 <?php if ( post_password_required() ) : ?>
-   <p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'blank' ); ?></p>
+   <p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view comments.', 'blank' ); ?></p>
+</div>
 <?php
    /* Stop the rest of comments.php from being processed,
    * but don't kill the script entirely -- we still have
